@@ -11,7 +11,7 @@ public class Encoder {
     public Encoder(Pose2D point, double scaleFactor) {
         double ticksPerRotation = 8192;
         double wheelRadius = 0.6889764;
-        double ticksToInches = (wheelRadius * Math.PI * 2.0) / ticksPerRotation;
+        ticksToInches = (wheelRadius * Math.PI * 2.0) / ticksPerRotation;
         x = point.getX();
         y = point.getY();
         double currentVal = 0;

@@ -1,10 +1,12 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(group="Track Width Tuner")
-public class TrackWidthTuner extends LinearOpMode {
+import org.firstinspires.ftc.teamcode.SampleMecanumDrive;
+
+@TeleOp(group="Heading Error Test")
+public class HeadingErrorTest extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -38,14 +40,10 @@ public class TrackWidthTuner extends LinearOpMode {
             double left = drive.lf.getCurrentPosition() * ticksToInches * drive.localizer.encoders[1].scaleFactor;
             double back = drive.rr.getCurrentPosition() * ticksToInches * drive.localizer.encoders[2].scaleFactor;
 
+            telemetry.addData("Heading: ", Math.toDegrees(drive.localizer.heading));
             telemetry.addData("Current Cumulative Angle: ", Math.toDegrees(currentCumAngle));
 
-            if(currentCumAngle != 0) {
-                telemetry.addData("Right Odo Y: ", -1 * right / currentCumAngle); // forward
-                telemetry.addData("Left Odo Y: ", -1 * left / currentCumAngle); // forward
-                telemetry.addData("Back Encoder: ", back / currentCumAngle); // back
-            }
-
+            drive.update();
             telemetry.update();
         }
     }

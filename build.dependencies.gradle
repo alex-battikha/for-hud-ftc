@@ -6,7 +6,8 @@ repositories {
         dirs rootProject.file('libs')
     }
     maven {
-        url = 'https://maven.brott.dev/' }
+        url = 'https://maven.brott.dev/'
+    }
 }
 
 dependencies {

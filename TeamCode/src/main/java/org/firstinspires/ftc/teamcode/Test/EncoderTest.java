@@ -14,7 +14,7 @@ public @TeleOp(group="EncoderTest") class EncoderTest extends LinearOpMode {
         waitForStart();
 
         while(opModeIsActive()){
-            drive.drive(gamepad1);
+//            drive.drive(this);
 
             telemetry.addData("Left Front Motor: ", drive.motors.get(0).getCurrentPosition());
             telemetry.addData("Left Rear Motor: ", drive.motors.get(1).getCurrentPosition());

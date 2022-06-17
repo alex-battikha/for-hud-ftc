@@ -1,18 +1,27 @@
 package org.firstinspires.ftc.teamcode.Test;
 
+import android.util.Log;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.Localizer;
 import org.firstinspires.ftc.teamcode.SampleMecanumDrive;
 
-public @TeleOp(group="SensorTest") class SensorTest extends LinearOpMode {
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gamepad1;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.opMode;
+
+@TeleOp(group="LocalizationTest")
+public class LocalizationTest extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        Log.e("ALEX", "alex");
+
         waitForStart();
 
-        while(opModeIsActive()){
+        while(opModeIsActive()) {
             double forward = gamepad1.left_stick_y * -0.4;
             double left =  gamepad1.left_stick_x * 0.6;
             double turn = gamepad1.right_stick_x * 0.35;
@@ -25,14 +34,9 @@ public @TeleOp(group="SensorTest") class SensorTest extends LinearOpMode {
             double powers[] = {p1, p2, p3, p4};
             drive.setMotorPowers(powers);
 
-            telemetry.addData("Left Intake: ", drive.leftIntake.getVoltage());
-            telemetry.addData("Right Intake: ", drive.rightIntake.getVoltage());
-            telemetry.addData("Deposit Sensor: ", drive.depositSensor.getVoltage());
-            telemetry.addData("Dist Left: ", drive.distLeft.getVoltage());
-            telemetry.addData("Dist Right: ", drive.distRight.getVoltage());
-            telemetry.addData("magLeft", drive.magLeft.getVoltage());
-            telemetry.addData("magRight: ", drive.magRight.getVoltage());
-            telemetry.addData("Flex: ", drive.flex.getVoltage());
+            telemetry.addData("X Position: ", drive.localizer.x);
+            telemetry.addData("Y Position: ", drive.localizer.y);
+            telemetry.addData("Heading Position: ", drive.localizer.heading);
             telemetry.update();
 
             drive.update();
