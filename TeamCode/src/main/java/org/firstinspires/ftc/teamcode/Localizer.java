@@ -187,7 +187,7 @@ public class Localizer {
 
 
     public void updateFlex(double flexVal) {
-        int valPressed = 35;
+        int valPressed = 333; //sensor returns values in thousandths, bulk data multiples by 1000
         if (flexVal < valPressed) {
             double sensorX = x + Math.cos(heading) * 5 - Math.sin(heading) * (-6.75 * Math.signum(y));
             double sensorY = y + Math.cos(heading) * (-6.75 * Math.signum(y)) + Math.sin(heading) * 5;
