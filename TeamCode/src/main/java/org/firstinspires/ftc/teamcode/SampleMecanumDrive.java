@@ -340,7 +340,7 @@ public class SampleMecanumDrive{
                     magValRight = (bulkData.getAnalogInputValue(magRight));
 
                     if (lastDistValLeft != distValLeft || lastDistValRight != distValRight) {
-                        localizer.distUpdate(distValRight,distValLeft);
+                        //localizer.distUpdate(distValRight,distValLeft);
                     }
                     lastDistValLeft = distValLeft;
                     lastDistValRight = distValRight;
@@ -707,7 +707,7 @@ public class SampleMecanumDrive{
             }
 
             double turn = headingError * headingP + headingIntegral * headingI + dHeadingError * headingD;
-            
+
             // our forward speed 0.5 is subtracted from our max speed (1.0) - turning speed
             double forward = 0;
             double left = 0;

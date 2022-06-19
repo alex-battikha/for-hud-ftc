@@ -79,7 +79,7 @@ public class Localizer {
             counter--;
             if (counter == 0) {
                 double headingError = (heading - imu.getAngularOrientation().firstAngle) - (lastHeading - lastImuHeading);
-                heading -= (headingError * 0.95);
+                heading -= headingError;
 
                 double deltaX = x - lastPos.x;
                 double deltaY = y - lastPos.y;
